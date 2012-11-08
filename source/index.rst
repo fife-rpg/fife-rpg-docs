@@ -3,10 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to fife-rpg's documentation!
-====================================
+FIFErpg documentation content
+=============================
 
-Contents:
+Getting started
+
+.. toctree::
+   :maxdepth: 2
+   
+   overview
+
+Module reference
 
 .. toctree::
    :maxdepth: 2
