@@ -12,6 +12,13 @@ Getting started
    :maxdepth: 2
    
    overview
+   
+Tutorial
+
+.. toctree::
+   :maxdepth: 2
+   
+   tutorial/tutorial1/tutorial
 
 Module reference
 
