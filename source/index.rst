@@ -18,7 +18,7 @@ Tutorial
 .. toctree::
    :maxdepth: 2
    
-   tutorial/tutorial1/tutorial
+   tutorial/tutorial
 
 Module reference
 

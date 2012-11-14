@@ -1,11 +1,5 @@
-Tutorial
-========
-
-This tutorial is intended to show the additions FIFErpg does to FIFE.
-It won't go much into detail about FIFE itself, unless necessary.
-
 Basics
-------
+======
 
 Like FIFE FIFErpg applications need a settings_ file. FIFErpg adds a few
 settings to the FIFE ones which are inside the "fife-rpg" module. The only one
@@ -18,7 +12,7 @@ in this tutorial.
 .. _settings : http://wiki.fifengine.net/Engine_Extensions#Engine_Settings
 
 An example of a basic settings file for FIFErpg looks like 
-:download:`this  <./settings-dist.xml>`
+:download:`this  <basics/settings-dist.xml>`
 
 Note that it is named "settings-dist.xml" and not "settings.xml". This is a
 feature that is already in FIFE itself. If it can't find the "settings.xml"
@@ -30,7 +24,7 @@ directory as the main Python file.
 
 Also while there is no text being actually shown in the basic example a font is
 needed. The tutorial uses the FreeSans font. The version used can obtained from
-:download:`here  <./fonts/FreeSans.ttf>`. You are free, of course, to use
+:download:`here  <basics/fonts/FreeSans.ttf>`. You are free, of course, to use
 whatever font you want, but you will need to adjust the settings file to point
 to the font. The default settings will look for a "FreeSans.ttf" file inside a 
 "fonts" directory.
