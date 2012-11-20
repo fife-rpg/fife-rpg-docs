@@ -90,8 +90,10 @@ the controller. This is done with the following code:
 
    app.push_mode(controller)
    
-The "push_mode" method is inherited from the bGrease class BaseManager and the
+The "push_mode" method is inherited from the bGrease class BaseManager_ and the
 FIFErpg controllers are specialized modes.
+
+.. _BaseManager : http://beliaar.github.com/bGrease/mod/mode.html#bGrease.mode.BaseManager.push_mode
 
 Finally, the only thing left is to actually start the application.
 
