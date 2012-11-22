@@ -127,4 +127,4 @@ If you run this code a window with a black background will appear.
 You can either use the Escape key, or the X button in the title bar of the 
 window to close it.
 
-The next section will show how to actually display a FIFE map.
+The :ref:`next <display>` part of the tutorial will show how to actually display a FIFE map.
