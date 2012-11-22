@@ -69,9 +69,9 @@ inside the root directory of the demo.
 If that opens a new window then everything was correctly installed.
 If the window is black, or the graphics appear blurry or otherwise incorrect
 it is mostly a problem with FIFE as that handles the graphical representation.
-You should check the known problems page here_.
+You should check the `Known Problems`_ page.  
 
-.. _here: http://wiki.fifengine.net/Known_Problems  
+.. _Known Problems: http://wiki.fifengine.net/Known_Problems
 
 Documentation
 -------------
