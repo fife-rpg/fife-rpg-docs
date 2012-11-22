@@ -61,7 +61,7 @@ This will be used to load the settings file, which is the next step:
 
 .. code:: python
 
-   settings = Setting(app_name="Tutorial 1")
+   settings = Setting(app_name="Tutorial 1", settings_file="settings.xml")
    
 The next thing is to create the application, using the settings:
 

@@ -3,7 +3,7 @@ from fife_rpg import GameSceneView
 from fife_rpg import GameSceneController
 from fife.extensions.fife_settings import Setting
 
-settings = Setting(app_name="Tutorial 1")
+settings = Setting(app_name="Tutorial 1", settings_file="settings.xml")
 
 def main():
     app = RPGApplication(settings)
