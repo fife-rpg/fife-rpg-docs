@@ -50,7 +50,7 @@ Example:
       Agent: fife_rpg.components.agent
  
 :download:`combined.yaml` contains the standard FIFErpg components, as well as
-a list of systems and actions which will be explained later.
+a list of systems, actions and behaviours which will be explained later.
 Also a list of the available map is needed. By default FIFErpg looks for a
 'maps.yaml' file inside the 'maps' subdirectory. This is a simple YAML file
 with that has the following structure:
@@ -148,7 +148,7 @@ If you run this code you should see something like this:
    
    Empty map. This may vary if you used a different map.
    
-If there appear to be graphical problems you might want to check out the `Known
+If it appears that there are graphical problems you might want to check out the `Known
 Problems <http://wiki.fifengine.net/Known_Problems>`_ section of FIFE.
 
 In the next part of the Tutorial we will be adding the Dynamic objects

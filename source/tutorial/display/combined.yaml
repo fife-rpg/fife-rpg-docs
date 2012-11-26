@@ -26,3 +26,5 @@ Actions:
   PickUpAction: fife_rpg.actions.pick_up
   ReadAction: fife_rpg.actions.read
   UnlockAction: fife_rpg.actions.unlock
+Behaviours:
+  Base: fife_rpg.behaviours.base
