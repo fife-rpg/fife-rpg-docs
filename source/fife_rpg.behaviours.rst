@@ -17,6 +17,14 @@ behaviours Package
     :undoc-members:
     :show-inheritance:
 
+:mod:`moving` Module
+--------------------
+
+.. automodule:: fife_rpg.behaviours.moving
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 :mod:`behaviour_manager` Module
 -------------------------------
 
