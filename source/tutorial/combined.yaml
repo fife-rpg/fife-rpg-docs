@@ -28,3 +28,4 @@ Actions:
   UnlockAction: fife_rpg.actions.unlock
 Behaviours:
   Base: fife_rpg.behaviours.base
+  Moving: fife_rpg.behaviours.moving
