@@ -129,3 +129,10 @@ components Package
     :undoc-members:
     :show-inheritance:
 
+:mod:`moving` Module
+--------------------
+
+.. automodule:: fife_rpg.components.moving
+    :members:
+    :undoc-members:
+    :show-inheritance:
