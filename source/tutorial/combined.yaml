@@ -13,6 +13,7 @@ Components:
   Lockable: fife_rpg.components.lockable
   RPGEquip: fife_rpg.components.equip
   Readable: fife_rpg.components.readable
+  Moving: fife_rpg.components.moving
 Systems:
   CharacterStatisticSystem: fife_rpg.systems.character_statistics
   GameVariables: fife_rpg.systems.game_variables
@@ -28,4 +29,3 @@ Actions:
   UnlockAction: fife_rpg.actions.unlock
 Behaviours:
   Base: fife_rpg.behaviours.base
-  Moving: fife_rpg.behaviours.moving
