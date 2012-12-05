@@ -13,13 +13,13 @@ FIFErpg uses the normal FIFE map files for the static non-interactive objects
 of a map and thus the first thing needed is an actual map. If you don't have a
 map yourself you can download this :download:`archive <display/maps.7z>`. Extract
 that archive to the directory where your settings-dist.xml is. It should create
-a maps and a objects directory. The latter contains the graphics for the map. 
-The map itself is in the maps directory. It is the same map that is used in 
+a maps and a objects directory. The latter contains the graphics for the map.
+The map itself is in the maps directory. It is the same map that is used in
 the RPG demo of FIFE.
 
 New Settings
 ------------
-Before this map can be loaded you need to add settings to your 
+Before this map can be loaded you need to add settings to your
 settings-dist.xml.
 The first is a 'Camera' setting. This is the camera that will be used after
 loading the map. For the downloaded map this is 'camera1'. Change this if you
@@ -151,5 +151,5 @@ If you run this code you should see something like this:
 If it appears that there are graphical problems you might want to check out the `Known
 Problems <http://wiki.fifengine.net/Known_Problems>`_ section of FIFE.
 
-In the next part of the Tutorial we will be adding the Dynamic objects
+In the :ref:`next <entities>` part of the Tutorial we will be adding the Dynamic objects
 to the map.

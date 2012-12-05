@@ -1,0 +1,11 @@
+!Entity
+Components:
+  General:
+      identifier: PlayerCharacter
+  Agent:
+      gfx: player
+      map: Level1
+      position: [-5, 0]
+      rotation: 180
+      stack_position: 0
+      behaviour_type: Base

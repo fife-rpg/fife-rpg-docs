@@ -9,3 +9,4 @@ It won't go much into detail about FIFE itself, unless necessary.
 
    basics
    display
+   entities
