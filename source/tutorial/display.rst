@@ -28,8 +28,8 @@ The second is the 'Components' setting. This is a list that tells FIFErpg which
 components are used by the application. This will be explained more later.
 For now the list only needs to contain 'Agent'.
 
-:download:`Here <display/settings-dist.xml>` is the updated settings-dist.xml
-file.
+You can verify with the updated
+:download:`settings-dist.xml <display/settings-dist.xml>` file.
 
 New Files
 ---------
@@ -117,7 +117,8 @@ changes the active map to "Level1".
 
 Here is the complete code:
 
-.. code:: python
+.. code-block:: python
+   :emphasize-lines: 10-11, 15-16
 
    from fife_rpg import RPGApplication
    from fife_rpg import GameSceneView
