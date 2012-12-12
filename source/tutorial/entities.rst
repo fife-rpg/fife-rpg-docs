@@ -204,4 +204,4 @@ If you run this code you should see something like this:
    
    This may vary if you used a different map.
 
-The next tutorial will show how to control entities.
+The :ref:`next <controlling>` tutorial will show how to control entities.
