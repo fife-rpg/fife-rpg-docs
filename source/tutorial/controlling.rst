@@ -124,7 +124,7 @@ So the definition of our Listener should be as follows:
 self._eventmanager.addMouseListener will register our Listener as a
 MouseListener.
 
-For each FIFE listener interface we add to the base classed we need to
+For each FIFE listener interface we add to the base class we need to
 add all possible events, otherwise you will get errors.
 
 For the `IMouseListener <http://www.fifengine.net/epydoc/fife.fife.IMouseListener-class.html>`_
