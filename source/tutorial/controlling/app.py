@@ -20,7 +20,7 @@ class Listener(ApplicationListener, fife.IMouseListener):
         player = self._application.world.get_entity("PlayerCharacter")
         if event.getButton() == fife.MouseEvent.LEFT:
             scr_point = self._application.screen_coords_to_map_coords(
-                            (event.getX(), event.getY())
+                            (event.getX(), event.getY()), "actors"
                             )
             fifeagent.run(player, scr_point)
                 

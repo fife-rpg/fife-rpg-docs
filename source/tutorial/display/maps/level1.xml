@@ -149,12 +149,6 @@
             <i o="grass:01" x="4.000000" y="8.000000" z="0.000000" r="0" stackpos="0" />
         </instances>
     </layer>
-    <layer id="items" x_offset="0.000000" y_offset="0.000000" z_offset="0.000000" x_scale="1.000000" y_scale="1.000000" rotation="0.000000" grid_type="square" transparency="0" pathing="cell_edges_and_diagonals">
-        <instances />
-    </layer>
-    <layer id="objects" x_offset="0.000000" y_offset="0.000000" z_offset="0.000000" x_scale="1.000000" y_scale="1.000000" rotation="0.000000" grid_type="square" transparency="0" pathing="cell_edges_and_diagonals">
-        <instances />
-    </layer>
     <layer id="actors" x_offset="0.000000" y_offset="0.000000" z_offset="0.000000" x_scale="1.000000" y_scale="1.000000" rotation="0.000000" grid_type="square" transparency="0" pathing="cell_edges_and_diagonals" layer_type="walkable">
         <instances />
     </layer>

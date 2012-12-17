@@ -25,10 +25,10 @@ actions Package
     :undoc-members:
     :show-inheritance:
 
-:mod:`change_map` Module
+:mod:`move_agent` Module
 ------------------------
 
-.. automodule:: fife_rpg.actions.change_map
+.. automodule:: fife_rpg.actions.move_agent
     :members:
     :undoc-members:
     :show-inheritance:

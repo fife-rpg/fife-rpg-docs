@@ -1,6 +1,6 @@
 Components:
   Agent: fife_rpg.components.agent
-  ChangeMap: fife_rpg.components.change_map
+  MoveAgent: fife_rpg.components.move_agent
   CharacterStatistics: fife_rpg.components.character_statistics
   Containable: fife_rpg.components.containable
   Container: fife_rpg.components.container
@@ -19,7 +19,7 @@ Systems:
   GameVariables: fife_rpg.systems.game_variables
   ScriptingSystem: fife_rpg.systems.scriptingsystem
 Actions:
-  ChangeMapAction: fife_rpg.actions.change_map
+  MoveAgentAction: fife_rpg.actions.move_agent
   CloseAction: fife_rpg.actions.close
   LockAction: fife_rpg.actions.lock
   LookAction: fife_rpg.actions.look

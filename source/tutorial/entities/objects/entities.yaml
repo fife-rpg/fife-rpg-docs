@@ -5,7 +5,7 @@ Components:
   Agent:
       gfx: player
       map: Level1
+      layer: actors
       position: [-5, 0]
       rotation: 180
-      stack_position: 0
       behaviour_type: Base

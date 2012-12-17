@@ -119,9 +119,9 @@ inside the objects subdirectory and put the following in it:
      Agent:
          gfx: player
          map: Level1
+         layer: actors
          position: [-5, 0]
          rotation: 180
-         stack_position: 0
          behaviour_type: Base
          
 The field values are explained in the respective component modules.

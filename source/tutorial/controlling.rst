@@ -167,7 +167,7 @@ Now, the method we will actually need is mousePressed, with the following code:
         player = self._application.world.get_entity("PlayerCharacter")
         if event.getButton() == fife.MouseEvent.LEFT:
             scr_point = self._application.screen_coords_to_map_coords(
-                            (event.getX(), event.getY())
+                            (event.getX(), event.getY()), "actors"
                             )
             fifeagent.run(player, scr_point)
             
@@ -176,8 +176,8 @@ Then we check if it was the left mouse button that was clicked with, as we only
 want to react to clicks with thaz button.
 Next we use the applications :py:meth:`screen_coords_to_map_coords() <fife_rpg.rpg_application.RPGApplication.screen_coords_to_map_coords>`
 method which takes a `fife.ScreenPoint <http://www.fifengine.net/epydoc/fife.fife.ScreenPoint-class.html>`_
-or a tuple of a position on the screen and returns those the
-matching coordinates on the map as a `fife.Location <http://www.fifengine.net/epydoc/fife.fife.Location-class.html>`_.
+or a tuple of a position on the screen and the name of a layer and returns
+the matching coordinates on given layer of the current map as a `fife.Location <http://www.fifengine.net/epydoc/fife.fife.Location-class.html>`_.
 We give it the location of the mouse click.
 Last we call the fifeagent.run function with the entity and the converted
 coordinates.
@@ -241,7 +241,7 @@ app.py
            player = self._application.world.get_entity("PlayerCharacter")
            if event.getButton() == fife.MouseEvent.LEFT:           
                scr_point = self._application.screen_coords_to_map_coords(
-                               (event.getX(), event.getY())
+                               (event.getX(), event.getY()), "actors"
                                )
                fifeagent.run(player, scr_point)
 
