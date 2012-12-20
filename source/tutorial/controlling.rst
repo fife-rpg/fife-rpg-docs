@@ -93,7 +93,7 @@ A practical example
 To close this part of the tutorial off we will look at a practical example of
 what we just learned: Using the mouse to let an entity move to a position.
 
-For that we first need a custom Listener and Application.
+For that we first need a custom Listener for the GameSceneController.
 
 Create a new module and add the following imports:
 
@@ -101,65 +101,50 @@ Create a new module and add the following imports:
 
    from fife import fife
    
-   from fife_rpg import RPGApplication
-   from fife_rpg.rpg_application import ApplicationListener
-   from fife_rpg.components import fifeagent 
+   from fife_rpg.game_scene import GameSceneListener
+   from fife_rpg.components import fifeagent
    
-The first thing we need to make is the Listener. A Listener is a class that
-receives events from FIFE. The default ApplicationListener offers the basic
-functionality and should always the base class of a custom Listener. It will
-already listen for key, command and console events. Our Listener also needs
-to receive mouse events so we need to add that to the base classes.
+A Listener is a class that receives events from FIFE. The default
+GameSceneListener already listens for mouse events , so we only need to
+override the event method that we want.
 
-So the definition of our Listener should be as follows:
+For other events, such as key presses, you would need to derive from the
+respective fife listener and add that listener to the event manager when
+the listener is activated, and remove it when the listener is deactivated.
+Also you need to add all possible events from the fife listener or you will
+get errors.
 
-.. code-block:: python
-
-   class Listener(ApplicationListener, fife.IMouseListener):
-       def __init__(self, engine, application):
-           ApplicationListener.__init__(self, engine, application)
-           fife.IMouseListener.__init__(self)
-           self._eventmanager.addMouseListener(self)
-
-self._eventmanager.addMouseListener will register our Listener as a
-MouseListener.
-
-For each FIFE listener interface we add to the base class we need to
-add all possible events, otherwise you will get errors.
-
-For the `IMouseListener <http://www.fifengine.net/epydoc/fife.fife.IMouseListener-class.html>`_
-the following methods are needed:
+If we would want to add key events, for example, we would need the following
+definition:
 
 .. code-block:: python
 
-    def mouseEntered(self, event):
-        pass
-    
-    def mouseExited(self, event):
-        pass
+   class Listener(GameSceneListener, fife.IKeyListener):
+   
+       def __init__(self, engine, gamecontroller=None):
+           GameSceneListener.__init__(self, engine, gamecontroller)   
+           fife.IKeyListener.__init__(self)                
+      
+       def activate(self):
+           GameSceneListener.activate(self)
+           self.eventmanager.addKeyListener(self)
+   
+       def deactivate(self):
+           GameSceneListener.deactivate(self)
+           self.eventmanager.removeKeyListener(self)
 
-    def mousePressed(self, event):
-        pass
-                
-    def mouseReleased(self, event):
-        pass
+       def keyPressed(self, event):
+           pass
+   
+       def keyReleased(self, event):
+           pass
 
-    def mouseClicked(self, event):
-        pass
+self._eventmanager.addMouseListener will add our Listener as a
+KeyListener and removeKeyListener will remove it.
+The activate, and deactivate methods are called by the GameSceneController when
+it gets activated and deactivated, respectively.
 
-    def mouseMoved(self, event):
-        pass
-    
-    def mouseDragged(self, event):
-        pass    
-    
-    def mouseWheelMovedDown(self, event):
-        pass
-
-    def mouseWheelMovedUp(self, event):
-        pass
-        
-Now, the method we will actually need is mousePressed, with the following code:
+We only need to override the mousePressed method, though, with the following code:
 
 .. code-block:: python
 
@@ -170,10 +155,24 @@ Now, the method we will actually need is mousePressed, with the following code:
                             (event.getX(), event.getY()), "actors"
                             )
             fifeagent.run(player, scr_point)
+
+So our listener looks like this:
+
+.. code-block:: python
+
+   class Listener(GameSceneListener):
+       
+       def mousePressed(self, event):
+           player = self.gamecontroller.application.world.get_entity("PlayerCharacter")
+           if event.getButton() == fife.MouseEvent.LEFT:
+               scr_point = self.gamecontroller.application.screen_coords_to_map_coords(
+                               (event.getX(), event.getY()), "actors"
+                               )
+               fifeagent.run(player, scr_point)
             
 First we get the entity with the identifier "PlayerCharacter".
 Then we check if it was the left mouse button that was clicked with, as we only
-want to react to clicks with thaz button.
+want to react to clicks with that button.
 Next we use the applications :py:meth:`screen_coords_to_map_coords() <fife_rpg.rpg_application.RPGApplication.screen_coords_to_map_coords>`
 method which takes a `fife.ScreenPoint <http://www.fifengine.net/epydoc/fife.fife.ScreenPoint-class.html>`_
 or a tuple of a position on the screen and the name of a layer and returns
@@ -182,118 +181,59 @@ We give it the location of the mouse click.
 Last we call the fifeagent.run function with the entity and the converted
 coordinates.
 
-We also need an application that uses this Listener. Like for the Listener
-our application needs to derive from RPGApplication.
-
-The code needed is much simpler than for the Listener, so here is the complete
-class:
-
-.. code-block:: python
-
-   class Application(RPGApplication):
-   
-       def __init__(self, settings):
-           RPGApplication.__init__(self, settings)
-   
-       def createListener(self):
-           self._listener = Listener(self.engine, self)
-           return self._listener
-
-The important part is the createListener method. It is called by the
-RPGApplication class on construction and should create a listener and return it.
-
-As the application and listener belong together they should be placed in the
-same module.
-
-Now we need to modify the main module to use our Application instead of the
-default one. Just replace "app = RPGApplication(settings)" with
-"app = Application(settings)", and import the module containing the application.
+Now we need to modify the main module to use our Listener instead of the
+default one. Just replace "controller = GameSceneController(view, app)" with
+"controller = GameSceneController(view, app, listener=Listener(app.engine))",
+and import the module containing the listener.
 
 If you run the code now the entity should run to the location on the map you
 click on.
 
 Here is the complete code for this tutorial:
 
-app.py
+tutorial_scene.py
 
 .. code-block:: python
    :emphasize-lines: 1-
 
    from fife import fife
    
-   from fife_rpg import RPGApplication
-   from fife_rpg.rpg_application import ApplicationListener
+   from fife_rpg.game_scene import GameSceneListener
    from fife_rpg.components import fifeagent
    
-   class Listener(ApplicationListener, fife.IMouseListener):
-       def __init__(self, engine, application):
-           ApplicationListener.__init__(self, engine, application)
-           fife.IMouseListener.__init__(self)
-           self._eventmanager.addMouseListener(self)
-   
-       def mouseEntered(self, event):
-           pass
+   class Listener(GameSceneListener):
        
-       def mouseExited(self, event):
-           pass
-   
        def mousePressed(self, event):
-           player = self._application.world.get_entity("PlayerCharacter")
-           if event.getButton() == fife.MouseEvent.LEFT:           
-               scr_point = self._application.screen_coords_to_map_coords(
+           player = self.gamecontroller.application.world.get_entity("PlayerCharacter")
+           if event.getButton() == fife.MouseEvent.LEFT:
+               scr_point = self.gamecontroller.application.screen_coords_to_map_coords(
                                (event.getX(), event.getY()), "actors"
                                )
                fifeagent.run(player, scr_point)
-
-       def mouseReleased(self, event):
-           pass
-   
-       def mouseClicked(self, event):
-           pass
-   
-       def mouseMoved(self, event):
-           pass
-       
-       def mouseDragged(self, event):
-           pass    
-       
-       def mouseWheelMovedDown(self, event):
-           pass
-   
-       def mouseWheelMovedUp(self, event):
-           pass
-   
-   class Application(RPGApplication):
-       
-       def __init__(self, settings):
-           RPGApplication.__init__(self, settings)
-           
-       def createListener(self):
-           self._listener = Listener(self.engine, self)
-           return self._listener
            
 run.py
 
 .. code-block:: python
-   :emphasize-lines: 6, 11, 24-25
+   :emphasize-lines: 7, 18, 25-26
 
+   from fife_rpg import RPGApplication
    from fife_rpg import GameSceneView
    from fife_rpg import GameSceneController
    from fife.extensions.fife_settings import Setting
    from fife_rpg.components import fifeagent
    
-   from app import Application
+   from tutorial_scene import Listener
    
    settings = Setting(app_name="Tutorial 4", settings_file="settings.xml")
    
    def main():
-       app = Application(settings)
+       app = RPGApplication(settings)
        app.load_components("combined.yaml")
        app.load_behaviours("combined.yaml")
        app.register_components()
        app.register_behaviours()
        view = GameSceneView(app)
-       controller = GameSceneController(view, app)
+       controller = GameSceneController(view, app, listener=Listener(app.engine))
        app.create_world()
        app.load_maps()
        world = app.world
@@ -304,7 +244,7 @@ run.py
        fifeagent.run(player, (0, 7))
        app.push_mode(controller)
        app.run()
-       
+   
    if __name__ == '__main__':
        main()
 

@@ -1,20 +1,21 @@
+from fife_rpg import RPGApplication
 from fife_rpg import GameSceneView
 from fife_rpg import GameSceneController
 from fife.extensions.fife_settings import Setting
 from fife_rpg.components import fifeagent
 
-from app import Application
+from tutorial_scene import Listener
 
 settings = Setting(app_name="Tutorial 4", settings_file="settings.xml")
 
 def main():
-    app = Application(settings)
+    app = RPGApplication(settings)
     app.load_components("combined.yaml")
     app.load_behaviours("combined.yaml")
     app.register_components()
     app.register_behaviours()
     view = GameSceneView(app)
-    controller = GameSceneController(view, app)
+    controller = GameSceneController(view, app, listener=Listener(app.engine))
     app.create_world()
     app.load_maps()
     world = app.world
