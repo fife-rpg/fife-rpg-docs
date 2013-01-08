@@ -21,7 +21,8 @@ class Listener(GameSceneListener):
                 scr_point = fife.ScreenPoint(event.getX(), event.getY())
                 actor_instances = game_map.get_instances_at(
                                                     scr_point, 
-                                                    game_map.get_layer("actors"))
+                                                    game_map.get_layer("actors")
+                                                    )
             if actor_instances:
                     for actor in actor_instances:
                         identifier = actor.getId()
@@ -47,7 +48,8 @@ class Controller(GameSceneController):
     
     def __init__(self, view, application, outliner=None, listener=None):
         listener = listener or Listener(application.engine, self)
-        GameSceneController.__init__(self, view, application, outliner, listener)
+        GameSceneController.__init__(self, view, application, outliner, 
+                                     listener)
         application.add_map_switch_callback(self.on_map_switched)
         
     def on_map_switched(self):
@@ -55,7 +57,8 @@ class Controller(GameSceneController):
                                         self.application.current_map.camera)
         font = get_manager().getDefaultFont()
         renderer.setFont(font)
-        renderer.addActiveLayer(self.application.current_map.get_layer("actors"))
+        renderer.addActiveLayer(self.application.current_map.get_layer(
+                                                                    "actors"))
         renderer.setBackground(100, 255, 100, 165)
         renderer.setBorder(50, 255, 50)
         renderer.setEnabled(True)
