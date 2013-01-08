@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'fife-rpg'
-copyright = u'2012, Karsten Bock'
+copyright = u'2012-2013, Karsten Bock'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
