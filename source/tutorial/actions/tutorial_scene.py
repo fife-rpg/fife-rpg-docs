@@ -11,7 +11,7 @@ class Listener(GameSceneListener):
         application = self.gamecontroller.application
         player = application.world.get_entity("PlayerCharacter")
         if event.getButton() == fife.MouseEvent.LEFT:
-            map_point = self.gamecontroller.application.screen_coords_to_map_coords(
+            map_point = application.screen_coords_to_map_coords(
                             (event.getX(), event.getY()), "actors"
                             )
             fifeagent.run(player, map_point)
@@ -46,7 +46,7 @@ class Listener(GameSceneListener):
 class Controller(GameSceneController):
     
     def __init__(self, view, application, outliner=None, listener=None):
-        listener = listener or DemoListener(application.engine, self)
+        listener = listener or Listener(application.engine, self)
         GameSceneController.__init__(self, view, application, outliner, listener)
         application.add_map_switch_callback(self.on_map_switched)
         

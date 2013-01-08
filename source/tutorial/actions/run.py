@@ -16,7 +16,7 @@ def main():
     app.register_behaviours()
     app.register_actions()
     view = GameSceneView(app)
-    controller = Controller(view, app, listener=Listener(app.engine))
+    controller = Controller(view, app)
     controller.listener.is_outlined = True
     app.create_world()
     app.load_maps()
