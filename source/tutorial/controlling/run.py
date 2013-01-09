@@ -6,7 +6,7 @@ from fife_rpg.components import fifeagent
 
 from tutorial_scene import Listener
 
-settings = Setting(app_name="Tutorial 4", settings_file="settings.xml")
+settings = Setting(app_name="Tutorial 5", settings_file="settings.xml")
 
 def main():
     app = RPGApplication(settings)
