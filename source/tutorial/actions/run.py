@@ -18,6 +18,7 @@ def main():
     view = GameSceneView(app)
     controller = Controller(view, app)
     controller.listener.is_outlined = True
+    controller.outliner.outline_ignore.append("PlayerCharacter")
     app.create_world()
     app.load_maps()
     world = app.world

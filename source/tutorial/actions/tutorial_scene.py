@@ -1,9 +1,9 @@
 from fife import fife
+from fife.extensions.pychan.internal import get_manager
 
 from fife_rpg.game_scene import GameSceneListener, GameSceneController
 from fife_rpg.components import fifeagent
 from fife_rpg.actions import ActionManager
-from fife.extensions.pychan.internal import get_manager
 
 class Listener(GameSceneListener):
     
@@ -15,7 +15,7 @@ class Listener(GameSceneListener):
                             (event.getX(), event.getY()), "actors"
                             )
             fifeagent.run(player, map_point)
-        if event.getButton() == fife.MouseEvent.RIGHT:
+        elif event.getButton() == fife.MouseEvent.RIGHT:
             game_map = application.current_map
             if game_map:
                 scr_point = fife.ScreenPoint(event.getX(), event.getY())
@@ -23,26 +23,27 @@ class Listener(GameSceneListener):
                                                     scr_point, 
                                                     game_map.get_layer("actors")
                                                     )
-            if actor_instances:
-                    for actor in actor_instances:
-                        identifier = actor.getId()
-                        if identifier == "PlayerCharacter":
-                            continue
-                        entity = application.world.get_entity(identifier)
-                        possible_actions = ActionManager.get_possible_actions(
-                                                                     player, 
-                                                                     entity) 
-                        actions = {}
-                        for name, action in possible_actions.iteritems():
-                            actions[name] = action(application, player, entity)
-                            print actions[name].menu_text
+            else:
+                actor_instances = ()
+            for actor in actor_instances:
+                identifier = actor.getId()
+                outliner = self.gamecontroller.outliner
+                if identifier in outliner.outline_ignore:
+                    continue
+                entity = application.world.get_entity(identifier)
+                possible_actions = ActionManager.get_possible_actions(
+                                                             player, 
+                                                             entity) 
+                actions = {}
+                for name, action in possible_actions.iteritems():
+                    actions[name] = action(application, player, entity)
 
-                        if actions.has_key("Look"):
-                            fifeagent.approach_and_execute(player, entity,
-                                callback=lambda: 
-                                    player.FifeAgent.instance.say(
-                                            actions["Look"].execute(), 2000)
-                            )
+                if actions.has_key("Look"):
+                    fifeagent.approach_and_execute(player, entity,
+                        callback=lambda: 
+                            player.FifeAgent.instance.say(
+                                    actions["Look"].execute(), 2000)
+                    )
                             
 class Controller(GameSceneController):
     
