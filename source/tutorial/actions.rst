@@ -117,6 +117,6 @@ and enable the renderer.
 Now we just need to add this as a callback when the map has switched. This is
 done by adding this line to the constructor of the controller:
 
-.. cocde :: python
+.. code :: python
 
    application.add_map_switch_callback(self.on_map_switched)
