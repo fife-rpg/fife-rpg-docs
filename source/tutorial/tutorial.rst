@@ -23,3 +23,8 @@ Standalone Tutorials
 --------------------
 
 This section contains tutorials that teach advanced aspects of FIFErpg.
+
+.. toctree::
+   :maxdepth: 2
+   
+   components
