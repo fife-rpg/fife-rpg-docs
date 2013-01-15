@@ -105,13 +105,13 @@ system is activated.
 
 You may need to import the manager, this is done with this code:
 
-.. code : python
+.. code :: python
 
    from fife_rpg.components import ComponentManager
    
 Then to register a command:
 
-.. code : python
+.. code :: python
 
    ComponentManager.register_script_command(<command_name>, <function>)
 
@@ -132,7 +132,7 @@ As for component functions what the functions actually do is up to you.
 
 Registering such a function is done as follows:
 
-.. code : python
+.. code :: python
 
    ComponentManager.register_checker(
        <list of component names>,
