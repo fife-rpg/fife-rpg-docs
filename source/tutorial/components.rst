@@ -87,4 +87,56 @@ component derives from will appear as registered but points to the component
 that derives from it. This can be used to make components that replace other
 components. This can be disabled by setting the "auto_register" argument
 of the register method to False.
-components that replace other components.
+
+Component functions
+-------------------
+While components only store data and have no methods attached that work with
+them, the modules of the default components have functions in them that do
+various things with the components. They don't have any specific format, so
+when you want to write your own functions you can write them however you need
+them to be.
+
+Script commands
+---------------
+The component manager, to which every components registers itself when the
+register method is called, can also be used to register script commands.
+These commands will automatically be available to scripts if the scripting
+system is activated.
+
+You may need to import the manager, this is done with this code:
+
+.. code : python
+
+   from fife_rpg.components import ComponentManager
+   
+Then to register a command:
+
+.. code : python
+
+   ComponentManager.register_script_command(<command_name>, <function>)
+
+When registering the components to the application one can disable the
+auto registering of script commands. For this to work the register commands
+have to be inside a "register_script_commands" function, inside the same module
+as the component, which takes no arguments.
+
+Checkers
+--------
+Another feature, which the component manager has, is to register
+checker functions. These functions should look for inconsistencies in
+components and, if possible, fix them, e.g. for the lockable component that an
+possibly attached fifeagent is playing the appropriate animation. The functions
+are called every pump/tick by the world.
+
+As for component functions what the functions actually do is up to you.
+
+Registering such a function is done as follows:
+
+.. code : python
+
+   ComponentManager.register_checker(
+       <list of component names>,
+       <checker function>)
+       
+As with the script commands you should these functions inside a
+"register_checkers" function inside the same module as the component.
