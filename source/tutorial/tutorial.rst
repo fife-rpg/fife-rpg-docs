@@ -1,4 +1,4 @@
-.. _tutorial
+.. _tutorial:
 
 Tutorial
 ========
@@ -31,3 +31,4 @@ This section contains tutorials that teach advanced aspects of FIFErpg.
    :maxdepth: 2
    
    components
+   dialogue
