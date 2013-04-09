@@ -15,3 +15,10 @@ methods as Components and Actions. The manager can be accessed with:
 The setting name in the settings file is "Systems"
 
 .. _bGrease Systems: http://beliaar.github.io/bGrease/mod/grease.html#bGrease.System
+
+The default systems of FIFErpg are explained in separate tutorials:
+
+.. toctree::
+   :maxdepth: 2
+   
+   scripting
