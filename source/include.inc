@@ -9,3 +9,4 @@
 .. |Action| replace:: :class:`Action <fife_rpg.actions.base.Base>`
 .. |Script| replace:: :class:`~fife_rpg.systems.scriptingsystem.Script`
 .. |ScriptingSystem| replace:: :class:`~fife_rpg.systems.scriptingsystem.ScriptingSystem`
+.. |GameVariables| replace:: :class:`~fife_rpg.systems.game_variables.GameVariables`
