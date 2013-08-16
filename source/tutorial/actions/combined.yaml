@@ -19,13 +19,16 @@ Systems:
   GameVariables: fife_rpg.systems.game_variables
   ScriptingSystem: fife_rpg.systems.scriptingsystem
 Actions:
-  MoveAgent: fife_rpg.actions.move_agent
   Close: fife_rpg.actions.close
+  EntityAction: fife_rpg.actions.entity_action
   Lock: fife_rpg.actions.lock
   Look: fife_rpg.actions.look
+  MoveAgent: fife_rpg.actions.move_agent
+  MoveCamera: fife_rpg.actions.move_camera
   Open: fife_rpg.actions.open
   PickUp: fife_rpg.actions.pick_up
   Read: fife_rpg.actions.read
+  SetGlobalLight: fife_rpg.actions.set_global_light
   Unlock: fife_rpg.actions.unlock
 Behaviours:
   Base: fife_rpg.behaviours.base
