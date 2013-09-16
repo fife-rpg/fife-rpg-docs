@@ -12,3 +12,4 @@
 .. |ScriptingSystem| replace:: :class:`~fife_rpg.systems.scriptingsystem.ScriptingSystem`
 .. |GameVariables| replace:: :class:`~fife_rpg.systems.game_variables.GameVariables`
 .. |CharacterStatistics| replace:: :class:`~fife_rpg.systems.game_variables.CharacterStatistics`
+.. |Map| replace:: :class:`~fife_rpg.map.Map`
