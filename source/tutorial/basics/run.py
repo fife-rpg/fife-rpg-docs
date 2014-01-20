@@ -12,6 +12,6 @@ def main():
     app.create_world()
     app.push_mode(controller)
     app.run()
-    
+
 if __name__ == '__main__':
     main()
